@@ -4,15 +4,7 @@ from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import CommentForm
 
-#from django.contrib.auth.forms import UserCreationForm
-#from django.urls import reverse_lazy
-#from django.views import generic
 
-
-'''
-def index(request):
-    return render(request,'index.html')
-'''
 
 def news_list(request):
     object_list= News.objects.all()
@@ -46,11 +38,3 @@ def news_detail(request, year, month, day, news):
     return render(request, 'website1/news/detail.html', {'news':news, 'comments': comments, 'comment_form': comment_form})
 
 
-
-
-"""
-class SignUp(generic.CreateView):
-    form_class = UserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'signup.html'
-"""
