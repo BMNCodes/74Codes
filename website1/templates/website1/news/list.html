@@ -1,0 +1,12 @@
+{% extends "website1/base.html" %}
+
+{% block title %} BMN News List {% endblock %}
+{% block content %}
+    <h1> BMN Website</h1>
+    {% for news in newss %}
+        <h2><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h2>
+        <p class="date"> Created on {{ news.created }} By {{ news.auther }}</p>
+        {{ news.body|truncatechars:50}}
+    {% endfor %}
+    {% include "pagination.html" with page=newss %}
+{% endblock %}

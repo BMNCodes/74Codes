@@ -1,0 +1,20 @@
+{% extends "website1/base.html" %}
+
+{% block title %} BMN News List {% endblock %}
+{% block content %}
+    <h1> {{news.title }}</h1>
+    {% for news in News %}
+        <h2><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h2>
+        <p class="date"> Created on {{ news.created }} By {{ news.auther }}</p>
+        {{ news.body}}
+    {% endfor %}
+
+    {% if new_comment %}
+    <h3> Add Comment</h3>
+    <form action= "." method="post">
+        {{ comment_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value=" submit"</p>
+    </form>
+    {% endif %}
+{% endblock %}
